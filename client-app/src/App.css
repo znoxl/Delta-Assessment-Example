@@ -1,0 +1,19 @@
+#app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  #content {
+    flex-grow: 1;
+  }
+  
+  footer {
+    background-color: #f8f9fa; /* Footer için bir renk */
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    position: relative; /* fixed ya da sticky değil */
+  }
+
+  
