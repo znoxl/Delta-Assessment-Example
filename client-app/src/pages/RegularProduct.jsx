@@ -10,7 +10,7 @@ const RegularProduct = () => {
     // Ürünleri al
     const fetchAllProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/get');
+        const response = await axios.get('https://project-data-1-ex9g.onrender.com/get');
         setProducts(response.data);
       } catch (error) {
         console.error('Ürünler alınırken hata oluştu:', error);

@@ -9,7 +9,7 @@ const GetFirstProduct = () => {
   const fetchProducts = () => {
     setLoading(true);
     axios
-      .get('http://localhost:5000/get?_limit=10')
+      .get('https://project-data-1-ex9g.onrender.com/get?_limit=10')
       .then((response) => {
         setProducts(response.data);
         setLoading(false);

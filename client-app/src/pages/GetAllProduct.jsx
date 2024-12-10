@@ -7,7 +7,7 @@ const GetAllProduct = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:5000/get')
+      .get('https://project-data-1-ex9g.onrender.com/get')
       .then((response) => {
         console.log(response.data); // Gelen veriyi consolede görmek için 
         setProducts(response.data);
