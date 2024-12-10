@@ -31,7 +31,7 @@ const RegularProduct = () => {
       style={{
         background: 'linear-gradient(135deg, #2C3E50, #FD746C)',
         minHeight: '100vh',
-        padding: '50px 20px',
+        padding: '20px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -43,11 +43,14 @@ const RegularProduct = () => {
           padding: '20px',
           borderRadius: '10px',
           boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-          width: '80%',
+          width: '100%',
           maxWidth: '1000px',
+          overflowX: 'auto', // Tablo taşmasını önler
         }}
       >
-        <h1 style={{ textAlign: 'center', color: '#2C3E50' }}>Ürün Listesi</h1>
+        <h1 style={{ textAlign: 'center', color: '#2C3E50', marginBottom: '20px' }}>
+          Ürün Listesi
+        </h1>
         <table
           border="1"
           style={{
@@ -55,6 +58,7 @@ const RegularProduct = () => {
             textAlign: 'center',
             backgroundColor: '#f9f9f9',
             borderCollapse: 'collapse',
+            fontSize: '14px',
           }}
         >
           <thead>
@@ -80,23 +84,50 @@ const RegularProduct = () => {
             ))}
           </tbody>
         </table>
-        <div style={{ marginTop: '20px', textAlign: 'center' }}>
+        <div
+          style={{
+            marginTop: '20px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
           <button
             onClick={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 1}
-            style={{ margin: '0 10px' }}
+            style={{
+              padding: '10px 20px',
+              margin: '0 10px',
+              backgroundColor: '#2C3E50',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              opacity: currentPage === 1 ? 0.5 : 1,
+            }}
           >
             Önceki
           </button>
           <button
             onClick={() => setCurrentPage(currentPage + 1)}
             disabled={currentPage * ITEMS_PER_PAGE >= products.length}
-            style={{ margin: '0 10px' }}
+            style={{
+              padding: '10px 20px',
+              margin: '0 10px',
+              backgroundColor: '#2C3E50',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              opacity: currentPage * ITEMS_PER_PAGE >= products.length ? 0.5 : 1,
+            }}
           >
             Sonraki
           </button>
         </div>
-        <p style={{ textAlign: 'center' }}>Şu anki sayfa: {currentPage}</p>
+        <p style={{ textAlign: 'center', marginTop: '10px', color: '#2C3E50' }}>
+          Şu anki sayfa: {currentPage}
+        </p>
       </div>
     </div>
   );

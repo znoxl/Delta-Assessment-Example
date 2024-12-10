@@ -9,7 +9,7 @@ const GetFirstProduct = () => {
   const fetchProducts = () => {
     setLoading(true);
     axios
-      .get('https://project-data-1-ex9g.onrender.com/get?_limit=10')
+      .get(`https://project-data-1-ex9g.onrender.com/get?_limit=10&_start=10`)
       .then((response) => {
         setProducts(response.data);
         setLoading(false);
@@ -20,81 +20,78 @@ const GetFirstProduct = () => {
       });
   };
 
-  // Sayfa ilk yüklendiğinde verileri çek
   useEffect(() => {
     fetchProducts();
   }, []);
 
-  // Ortak stiller
-  const styles = {
-    container: {
-      background: 'linear-gradient(135deg, #2C3E50, #FD746C)', // Arka plan degrade rengi
-      minHeight: '100vh',
-      padding: '50px 20px',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    content: {
-      backgroundColor: '#fff',
-      padding: '20px',
-      borderRadius: '10px',
-      boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-      width: '80%',
-      maxWidth: '1000px',
-    },
-    table: {
-      width: '100%',
-      marginTop: '20px',
-      textAlign: 'center',
-      backgroundColor: '#f9f9f9',
-      borderCollapse: 'collapse',
-    },
-    tableHeader: {
-      backgroundColor: '#2C3E50',
-      color: '#fff',
-    },
-    tableCell: {
-      padding: '10px',
-      border: '1px solid #ddd',
-    },
-    loadingText: {
-      fontSize: '18px',
-      color: '#f0ad4e',
-    },
-  };
-
   return (
-    <div style={styles.container}>
-      <div style={styles.content}>
-        <h1 style={{ textAlign: 'center', color: '#2C3E50' }}>First 10 Products</h1>
+    <div
+      style={{
+        background: 'linear-gradient(135deg, #2C3E50, #FD746C)',
+        minHeight: '100vh',
+        padding: '20px',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: '#fff',
+          padding: '20px',
+          borderRadius: '10px',
+          boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+          width: '100%',
+          maxWidth: '1000px',
+        }}
+      >
+        <h1 style={{ textAlign: 'center', color: '#2C3E50', marginBottom: '20px' }}>
+          Middle Product
+        </h1>
         {loading ? (
-          <p style={styles.loadingText}>Veriler yükleniyor...</p>
+          <p style={{ textAlign: 'center', fontSize: '18px', color: '#f0ad4e' }}>
+            Veriler yükleniyor...
+          </p>
         ) : (
-          <table style={styles.table}>
-            <thead style={styles.tableHeader}>
-              <tr>
-                <th style={styles.tableCell}>ID</th>
-                <th style={styles.tableCell}>Ürün Adı</th>
-                <th style={styles.tableCell}>Marka</th>
-                <th style={styles.tableCell}>Fiyat</th>
-                <th style={styles.tableCell}>Toplu Satış Fiyatı</th>
-                <th style={styles.tableCell}>Adet</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((product) => (
-                <tr key={product.id}>
-                  <td style={styles.tableCell}>{product.id}</td>
-                  <td style={styles.tableCell}>{product.Name}</td>
-                  <td style={styles.tableCell}>{product.Brand}</td>
-                  <td style={styles.tableCell}>{product.Price}</td>
-                  <td style={styles.tableCell}>{product['Wholesale-Price']}</td>
-                  <td style={styles.tableCell}>{product.Quantity}</td>
+          <div
+            style={{
+              overflowX: 'auto', // Yatay kaydırma desteği
+            }}
+          >
+            <table
+              border="1"
+              style={{
+                width: '100%',
+                textAlign: 'center',
+                backgroundColor: '#f9f9f9',
+                borderCollapse: 'collapse',
+                fontSize: '14px', // Mobilde daha okunabilir boyut
+              }}
+            >
+              <thead>
+                <tr style={{ backgroundColor: '#2C3E50', color: '#fff' }}>
+                  <th style={{ padding: '10px' }}>ID</th>
+                  <th style={{ padding: '10px' }}>Ürün Adı</th>
+                  <th style={{ padding: '10px' }}>Marka</th>
+                  <th style={{ padding: '10px' }}>Fiyat</th>
+                  <th style={{ padding: '10px' }}>Toplu Satış Fiyatı</th>
+                  <th style={{ padding: '10px' }}>Adet</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {products.map((product) => (
+                  <tr key={product.id}>
+                    <td style={{ padding: '10px' }}>{product.id}</td>
+                    <td style={{ padding: '10px' }}>{product.Name}</td>
+                    <td style={{ padding: '10px' }}>{product.Brand}</td>
+                    <td style={{ padding: '10px' }}>{product.Price}</td>
+                    <td style={{ padding: '10px' }}>{product['Wholesale-Price']}</td>
+                    <td style={{ padding: '10px' }}>{product.Quantity}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

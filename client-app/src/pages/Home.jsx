@@ -19,20 +19,21 @@ const styles = {
     padding: '40px',      
     maxWidth: '800px',      
     margin: '0 auto', 
-    transition: 'transform 0.3s ease, box-shadow 0.3s ease' // Hover efekti için geçiş ekledik
+    transition: 'transform 0.3s ease, box-shadow 0.3s ease', // Hover efekti için geçiş ekledik
+    width: '100%' // Kart genişliğini %100 yaparak mobilde daha iyi görünmesini sağladık
   },   
   cardHover: { // Hover sırasında uygulanacak stiller
     transform: 'scale(1.05)',      
     boxShadow: '0 8px 20px rgba(0, 0, 0, 0.2)'   
   },   
   cardTitle: {     
-    fontSize: '2.8rem',      
+    fontSize: '2rem', // Font boyutunu duyarlı hale getirdik
     fontWeight: 'bold',      
     color: '#2C3E50',     
     marginBottom: '20px'   
   },   
   cardText: {     
-    fontSize: '1.2rem',      
+    fontSize: '1rem', // Font boyutunu duyarlı hale getirdik
     color: '#555',     
     marginBottom: '30px'   
   },   
@@ -42,6 +43,20 @@ const styles = {
     borderRadius: '15px',      
     boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',      
     marginTop: '20px',   
+  },
+  '@media (max-width: 768px)': { // Mobil cihazlar için özel stiller
+    card: {
+      padding: '20px', // Daha küçük padding
+    },
+    cardTitle: {
+      fontSize: '1.6rem', // Daha küçük başlık
+    },
+    cardText: {
+      fontSize: '0.9rem', // Daha küçük metin
+    },
+    cardImage: {
+      maxWidth: '100%', // Görsel genişliğini tam ekran yap
+    },
   }
 };
 
@@ -68,7 +83,7 @@ function Home() {
           onMouseEnter={() => setIsHovered(true)} // Hover başladığında tetiklenir
           onMouseLeave={() => setIsHovered(false)} // Hover bittiğinde tetiklenir
         >
-          <Card style={{ border: 'none' }}> {/* Reactstrap Card */}
+          <Card style={{ border: 'none' }}> {/* Reactstrap Card */}  
             <CardBody>
               <CardTitle style={styles.cardTitle}>
                 Welcome to Delta-V

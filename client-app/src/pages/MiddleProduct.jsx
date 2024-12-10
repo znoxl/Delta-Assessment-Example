@@ -6,7 +6,7 @@ const GetFirstProduct = () => {
   const [loading, setLoading] = useState(false);
 
   // Verileri çeken fonksiyon
-  const fetchProducts = (page) => {
+  const fetchProducts = () => {
     setLoading(true);
     axios
       .get(`https://project-data-1-ex9g.onrender.com/get?_limit=10&_start=10`)
@@ -20,7 +20,6 @@ const GetFirstProduct = () => {
       });
   };
 
-  // Sayfa ilk yüklendiğinde ilk sayfayı çek
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -30,7 +29,7 @@ const GetFirstProduct = () => {
       style={{
         background: 'linear-gradient(135deg, #2C3E50, #FD746C)',
         minHeight: '100vh',
-        padding: '50px 20px',
+        padding: '20px',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -42,48 +41,57 @@ const GetFirstProduct = () => {
           padding: '20px',
           borderRadius: '10px',
           boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-          width: '80%',
+          width: '100%',
           maxWidth: '1000px',
         }}
       >
-        <h1 style={{ textAlign: 'center', color: '#2C3E50' }}>Middle Product</h1>
+        <h1 style={{ textAlign: 'center', color: '#2C3E50', marginBottom: '20px' }}>
+          Middle Product
+        </h1>
         {loading ? (
           <p style={{ textAlign: 'center', fontSize: '18px', color: '#f0ad4e' }}>
             Veriler yükleniyor...
           </p>
         ) : (
-          <table
-            border="1"
+          <div
             style={{
-              width: '100%',
-              textAlign: 'center',
-              backgroundColor: '#f9f9f9',
-              borderCollapse: 'collapse',
+              overflowX: 'auto', // Yatay kaydırma desteği
             }}
           >
-            <thead>
-              <tr style={{ backgroundColor: '#2C3E50', color: '#fff' }}>
-                <th>ID</th>
-                <th>Ürün Adı</th>
-                <th>Marka</th>
-                <th>Fiyat</th>
-                <th>Toplu Satış Fiyatı</th>
-                <th>Adet</th>
-              </tr>
-            </thead>
-            <tbody>
-              {products.map((product) => (
-                <tr key={product.id}>
-                  <td>{product.id}</td>
-                  <td>{product.Name}</td>
-                  <td>{product.Brand}</td>
-                  <td>{product.Price}</td>
-                  <td>{product['Wholesale-Price']}</td>
-                  <td>{product.Quantity}</td>
+            <table
+              border="1"
+              style={{
+                width: '100%',
+                textAlign: 'center',
+                backgroundColor: '#f9f9f9',
+                borderCollapse: 'collapse',
+                fontSize: '14px', // Mobilde daha okunabilir font boyutu
+              }}
+            >
+              <thead>
+                <tr style={{ backgroundColor: '#2C3E50', color: '#fff' }}>
+                  <th style={{ padding: '10px' }}>ID</th>
+                  <th style={{ padding: '10px' }}>Ürün Adı</th>
+                  <th style={{ padding: '10px' }}>Marka</th>
+                  <th style={{ padding: '10px' }}>Fiyat</th>
+                  <th style={{ padding: '10px' }}>Toplu Satış Fiyatı</th>
+                  <th style={{ padding: '10px' }}>Adet</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {products.map((product) => (
+                  <tr key={product.id}>
+                    <td style={{ padding: '10px' }}>{product.id}</td>
+                    <td style={{ padding: '10px' }}>{product.Name}</td>
+                    <td style={{ padding: '10px' }}>{product.Brand}</td>
+                    <td style={{ padding: '10px' }}>{product.Price}</td>
+                    <td style={{ padding: '10px' }}>{product['Wholesale-Price']}</td>
+                    <td style={{ padding: '10px' }}>{product.Quantity}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     </div>

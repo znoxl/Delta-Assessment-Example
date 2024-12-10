@@ -21,11 +21,11 @@ function Header() {
       animate={{ y: 0, opacity: 1 }} // Tamamen görünür ve kayarak aşağı gelir
       transition={{ duration: 0.5 }}
     >
-      <Navbar color="dark" dark expand="md">
+      <Navbar color="dark" dark expand="md" className="shadow">
         <NavbarBrand href="/">Delta-V</NavbarBrand>
         <NavbarToggler onClick={toggleNavbar} />
         <Collapse isOpen={!collapsed} navbar>
-          <Nav className="me-auto" navbar>
+          <Nav className="ms-auto" navbar>
             <NavItem>
               <NavLink href="/">Home</NavLink>
             </NavItem>

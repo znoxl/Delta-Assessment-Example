@@ -8,7 +8,7 @@ function Footer() {
       <Container>
         <Row>
           {/* Company Section */}
-          <Col md="4" style={colStyle}>
+          <Col xs="12" sm="12" md="4" style={colStyle}>
             <h5 style={headingStyle}>Delta-V</h5>
             <p style={paragraphStyle}>
               Delta-V, teknoloji dünyasında yenilikçi çözümler sunarak sektördeki liderliğini sürdürmektedir. Müşterilerine güvenilir ve hızlı
@@ -22,7 +22,7 @@ function Footer() {
           </Col>
           
           {/* Quick Links Section */}
-          <Col md="4" style={colStyle}>
+          <Col xs="12" sm="12" md="4" style={colStyle}>
             <h5 style={headingStyle}>Quick Links</h5>
             <ul style={ulStyle}>
               <li><a href="/" style={linkStyle}>Home</a></li>
@@ -35,19 +35,13 @@ function Footer() {
           </Col>
           
           {/* Social Media Section */}
-          <Col md="4" style={colStyle}>
+          <Col xs="12" sm="12" md="4" style={colStyle}>
             <h5 style={headingStyle}>Follow Us</h5>
             <div style={socialIconsStyle}>
-              <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-                <FaFacebook size={30} color="#fff" />
-              </a>
-              <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
-                <FaTwitter size={30} color="#fff" />
-              </a>
-              <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/emremeralzn" target="_blank" rel="noopener noreferrer">
                 <FaInstagram size={30} color="#fff" />
               </a>
-              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/emre-meralsm/" target="_blank" rel="noopener noreferrer">
                 <FaLinkedin size={30} color="#fff" />
               </a>
             </div>
@@ -67,14 +61,14 @@ function Footer() {
   );
 }
 
-// Inline style objelerini düzenledim
+// Inline style objelerini düzenledik
 const footerStyle = {
   backgroundColor: '#121212',
   color: '#fff',
   padding: '40px 0',
   fontFamily: 'Arial, sans-serif',
   width: '100%',
-  height:'100%',
+  height: '100%',
   position: 'relative',
   bottom: '0',
 };
@@ -110,6 +104,8 @@ const linkStyle = {
 const socialIconsStyle = {
   display: 'flex',
   gap: '20px',
+  justifyContent: 'center', // İkonları merkezde hizalar
+  flexWrap: 'wrap', // Ekran küçükse ikonlar alt satıra geçer
 };
 
 const footerBottomStyle = {
